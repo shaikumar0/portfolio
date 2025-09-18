@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio</title>
+  <meta name="description"
+    content="Portfolio with parallax layers, aura, interactive background objects, cursor effects and GSAP transitions." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+
+<body class="theme-land dark">
+  <!-- Parallax layers container -->
+  <div class="viewport">
+    <div class="parallax-layer layer-back" id="layerBack"></div>
+    <div class="parallax-layer layer-mid" id="layerMid"></div>
+    <div class="parallax-layer layer-front" id="layerFront"></div>
+  </div>
+
+  <!-- Canvas for interactive sprites (leaves/jellies/bubbles/stars) -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- overlay tint used for smooth theme transitions -->
+  <!-- <div id="overlayTint"></div> -->
+
+  <!-- Cursor canvas for trail effects -->
+  <canvas id="cursorCanvas"></canvas>
+
+  <!-- Main content -->
+  <div class="container" role="main">
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <div class="title">Umar Shaik</div>
+          <div style="font-size:.85rem;color:var(--muted)">Full Stack Developper</div>
+        </div>
+      </div>
+
+      <nav class="controls" aria-label="Controls">
+        <div class="glass theme-row" role="toolbar">
+          <!-- fixed: removed stray leading space in data-theme -->
+          <button data-theme="land" class="pressed" aria-pressed="true">Land</button>
+          <button data-theme="water" aria-pressed="false">Water</button>
+          <button data-theme="space" aria-pressed="false">Space</button>
+        </div>
+
+        <div class="glass mode-row" role="toolbar" aria-label="Modes" style="margin-left:6px">
+          <button id="darkBtn" class="pressed" aria-pressed="true">Dark</button>
+          <button id="lightBtn" aria-pressed="false">Light</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="portrait-wrap" aria-hidden="false">
+          <div class="aura" id="aura"></div>
+          <div>
+            <div class="eyebrow">Hello — I craft immersive experiences</div>
+            <h1 id="heroTitle">Hi, I'm <span
+                style="background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent">Umar
+                Shaik</span></h1>
+            <p class="lead">
+              A responsive personal portfolio website built using HTML, CSS, and JavaScript, designed to showcase
+              skills, certifications, and projects across all devices
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="glass-card" aria-labelledby="aboutTitle">
+        <h2 id="aboutTitle">About</h2>
+        <p style="color:var(--muted)">
+          I’m a Computer Science student passionate about problem-solving and constantly exploring new skills.
+          Currently, I’m focused on building projects with HTML, CSS, and JavaScript while learning React to strengthen
+          my frontend development expertise.
+          Beyond web development, I’m an enthusiast in machine learning and have started learning its fundamentals. I
+          enjoy tackling algorithmic challenges, experimenting with new technologies, and continuously improving my
+          technical and creative abilities.
+        </p>
+      </section>
+
+      <section id="projects" style="margin-top:18px">
+        <h3>Projects</h3>
+        <div class="projects" style="display:flex; flex-direction:column; gap:12px;margin-top:12px">
+
+          <!-- Project 1 -->
+          <a href="https://www.lastline.life/" class="glass-card" style="display:flex;align-items:center;gap:12px;">
+            <img src="images/lastline.jpg" alt="LastLine Project Thumbnail"
+              style="width:180px;height:80px;object-fit:cover;border-radius:8px;">
+            <span>
+              LastLine — Built a Mail Organizer leveraging AI models to classify spam vs non-spam
+              emails, extract deadlines from job, internship and hackathon mails, sends automated reminders
+              for approaching deadlines via WhatsApp Meta Bot
+            </span>
+          </a>
+
+          <!-- Project 2 -->
+          <a href="https://shaikumar0.github.io/tic_tac_toe/" class="glass-card"
+            style="display:flex;align-items:center;gap:12px;">
+            <img src="images/tic.png" alt="Tic Tac Toe Project Thumbnail"
+              style="width:180px;height:80px;object-fit:cover;border-radius:8px;">
+            <span>
+              Tic Tac Toe — Developed an interactive Tic-Tac-Toe web application using HTML, CSS, and JavaScript.
+            </span>
+          </a>
+
+          <!-- Project 3 -->
+          <a href="https://shaikumar0.github.io/amazon_clone/" class="glass-card"
+            style="display:flex;align-items:center;gap:12px;">
+            <img src="images/amazon.png" alt="Amazon Clone Project Thumbnail"
+              style="width:180px;height:80px;object-fit:cover;border-radius:8px;">
+            <span>
+              Amazon Clone — Developed User interface similar to Amazon with features like product listings,
+              categories, shopping cart and content rendering.
+            </span>
+          </a>
+
+        </div>
+      </section>
+      <section id="certificates" style="margin-top:18px">
+        <h3>Certificates</h3>
+        <div class="certificates" style="display:flex; flex-direction:row; gap:50px;margin-top:12px">
+
+          <!-- Certificate 1 -->
+          <a href="certificate/red Hat rhcsa certificate.pdf" class="glass-card" style="gap:12px;">
+            <img src="certificate/redhat.png" alt="Redhat Certificate "
+              style="width:300px;height:270px;object-fit:cover;border-radius:8px;">
+          </a>
+
+          <!-- Certificate 2 -->
+          <a href="certificate/oracle java certificate.pdf" class="glass-card"
+            style="display:flex;align-items:center;gap:12px;">
+            <img src="certificate/javaoraclebadge.jpg" alt="Java Certificate"
+              style="width:300px;height:270px;object-fit:cover;border-radius:8px;">
+           
+          </a>
+
+          <!-- Certificate 3 -->
+          <a href="certificate/os_cisco.pdf" class="glass-card"
+            style="display:flex;align-items:center;gap:12px;">
+            <img src="certificate/os_cisco_badge.png" alt="Amazon Clone Certificate Thumbnail"
+              style="width:300px;height:270px;object-fit:contain;border-radius:8px;">
+            
+          </a>
+
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:18px" class="glass-card">
+        <h3>Contact</h3>
+        <a href="https://github.com/shaikumar0">GitHub</a>
+        <a href="https://www.linkedin.com/in/shaik-umar-400947290">LinkedIn</a>
+        <p style="color:var(--muted)">shaikumar14363@gmail.com</p>
+      </section>
+
+      <footer id="siteFooter" style="margin-top:18px; position:relative;">
+        <div style="color:var(--muted)">&copy; <span id="year"></span> Shaik Umar</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- main script (deferred so DOM exists) -->
+  <script src="portfolio.js" defer></script>
+</body>
+
+</html>
